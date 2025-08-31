@@ -31,6 +31,7 @@ class GoogleMapsApi:
         # старт метода POST
         result_post = HttpMethods.post(post_url, json_create_new_place)
         print(result_post.text)
-        # return result_post
+        assert result_post.status_code == 200
+        print("Статус-код корректный")
 
-
+        return result_post
