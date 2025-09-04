@@ -1,8 +1,8 @@
 from utils.api import GoogleMapsApi
 from requests import Response
 
-class TestCreatePlace:
 
+class TestCreatePlace:
 
     # тест передачи данных через метод POST и GET
     def test_create_new_place(self):

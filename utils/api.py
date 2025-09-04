@@ -1,10 +1,10 @@
 from utils.httpmethods import HttpMethods
 
+
 base_url = "https://rahulshettyacademy.com"
 key = "?key=qaclick123"
 
 class GoogleMapsApi:
-
 
     @staticmethod
     def create_new_place():
