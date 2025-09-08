@@ -34,3 +34,14 @@ class GoogleMapsApi:
         result_post = HttpMethods.post(post_url, json_create_new_place)
         print(result_post.text)
         return result_post
+
+# Проверяем полученный place_id через GET метод
+    @staticmethod
+    def get_new_place(place_id):
+        get_resource = "/maps/api/place/get/json"
+        get_url = base_url + get_resource + key + "&place_id" + place_id
+        print(get_url)
+        # старт метода GET
+        resul_get = HttpMethods.get(get_url)
+        print(resul_get.text)
+        return resul_get
