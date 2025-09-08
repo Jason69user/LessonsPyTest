@@ -1,5 +1,6 @@
 import  requests
 
+
 # класс для кастомных методов
 class HttpMethods:
     headers = {'Content-type': 'application/json'}
