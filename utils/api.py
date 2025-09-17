@@ -39,7 +39,7 @@ class GoogleMapsApi:
     @staticmethod
     def get_new_place(place_id):
         get_resource = "/maps/api/place/get/json"
-        get_url = base_url + get_resource + key + "&place_id" + place_id
+        get_url = base_url + get_resource + key + "&place_id=" + place_id
         print(get_url)
         # старт метода GET
         resul_get = HttpMethods.get(get_url)
@@ -60,3 +60,16 @@ class GoogleMapsApi:
         result_put = HttpMethods.put(put_url, json_for_update_new_location)
         print(result_put.text)
         return result_put
+
+# Удаляем адрес через DELETE
+    @staticmethod
+    def delete_new_place(place_id):
+        delete_resource = "/maps/api/place/delete/json"
+        delete_url = base_url + delete_resource + key
+        print(delete_url)
+        json_for_delete_new_location = {
+            "place_id": place_id
+        }
+        result_delete = HttpMethods.delete(delete_url, json_for_delete_new_location)
+        print(result_delete.text)
+        return result_delete
