@@ -8,7 +8,7 @@ class Checking:
     # проверяем статус-код запроса
     @staticmethod
     def check_status_code(response: Response, status_code):
-        assert status_code == response.status_code, print("Провал. Статус-код = " + str(response.status_code))
+        assert status_code == response.status_code, f"Провал. Статус-код = {str(response.status_code)}"
         print(f"Успешно. Статус-код = " + str(response.status_code))
 
     @staticmethod
