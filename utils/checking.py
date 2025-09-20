@@ -11,6 +11,7 @@ class Checking:
         assert status_code == response.status_code, f"Провал. Статус-код = {str(response.status_code)}"
         print(f"Успешно. Статус-код = " + str(response.status_code))
 
+    # проверка наличия полей в запросе
     @staticmethod
     def check_json_token(response: Response, expected_value):
         token = json.loads(response.text)
