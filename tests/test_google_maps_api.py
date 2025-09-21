@@ -13,17 +13,20 @@ class TestCreatePlace:
         place_id = json_post.get("place_id")
         Checking.check_status_code(result_post, 200)
         Checking.check_json_token(result_post, ['status', 'place_id', 'scope', 'reference', 'id'])
+        Checking.check_json_value(result_post, 'status', 'OK')
 
         print("Метод GET POST")
         result_get: Response = GoogleMapsApi.get_new_place(place_id)
         Checking.check_status_code(result_get, 200)
         Checking.check_json_token(result_get, ['location', 'accuracy', 'name', 'phone_number',
                                                'address', 'types', 'website', 'language'])
+        Checking.check_json_value(result_get, 'language', 'French-IN')
 
         print("Метод PUT")
         result_put: Response = GoogleMapsApi.put_new_place(place_id)
         Checking.check_status_code(result_put, 200)
         Checking.check_json_token(result_put, ['msg'])
+        Checking.check_search_word_in_value(result_put, 'msg', 'successfully')
 
         print("Метод GET PUT")
         result_get: Response = GoogleMapsApi.get_new_place(place_id)
@@ -31,15 +34,18 @@ class TestCreatePlace:
         Checking.check_json_token(result_get,
                                   ['location', 'accuracy', 'name', 'phone_number', 'address',
                                    'types', 'website', 'language'])
+        Checking.check_search_word_in_value(result_get, 'address', 'Sangvinius')
 
         print("Метод DELETE")
         result_delete: Response = GoogleMapsApi.delete_new_place(place_id)
         Checking.check_status_code(result_delete, 200)
         Checking.check_json_token(result_delete, ['status'])
+        Checking.check_json_value(result_delete, 'status', 'OK')
 
         print("Метод GET DELETE")
         result_get: Response = GoogleMapsApi.get_new_place(place_id)
         Checking.check_status_code(result_get, 404)
         Checking.check_json_token(result_get, ['msg'])
+        Checking.check_search_word_in_value(result_get, 'msg', 'failed')
 
         print("Тестирование создания, изменения и удаления новой локации прошло успешно")
