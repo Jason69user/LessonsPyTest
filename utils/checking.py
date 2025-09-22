@@ -1,5 +1,4 @@
 import json
-
 from requests import Response
 
 
@@ -31,7 +30,5 @@ class Checking:
     def check_search_word_in_value(response: Response, field_name, search_word):
         check = response.json()
         check_info = check.get(field_name)
-        if search_word in check_info:
-            print("Слово " + search_word + " присутствует")
-        else:
-            print("Слово " + search_word + " отсутствует")
+        assert search_word in check_info, f"Слово {search_word} отсутствует"
+        print("Слово " + search_word + " присутствует")
